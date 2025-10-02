@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid justify-content-center bg-light p-5">
+        <h1 class="pt-5 pb-5 text-center">Welcome to Repairs System</h1>
+        <div class="container border border-light-subtle rounded text-center">
+            <p class="pt-5 pb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci at aut commodi consequatur corporis deserunt dolor dolore dolorem et facere maxime nulla perferendis placeat praesentium ratione similique, temporibus ullam.</p>
+        </div>
+    </div>
+
+    <div class="row p-5 justify-content-center bg-body-secondary">
+        {% for repair in repairs %}
+            <div class="col-4 px-5">
+                <div class="card" style="width: 18rem;">
+                  <img src="{{ repair.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ repair.shop }}</h5>
+                    <p class="card-text">{{ repair.date }}</p>
+                      <p class="card-text">{{ repair.car }}</p>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <span class="text-center p-5">To add a car repair go to the repairs page.</span>
+    </div>
+{% endblock %}

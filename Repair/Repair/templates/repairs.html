@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row p-5 justify-content-center bg-body-secondary">
+        {% for repair in repairs %}
+            <div class="col-4 px-5">
+                <div class="card" style="width: 18rem;">
+                  <img src="{{ repair.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ repair.shop }}</h5>
+                    <p class="card-text">{{ repair.date }}</p>
+                      <p class="card-text">{{ repair.car }}</p>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="container-fluid bg-light">
+        <form method="post" action="{% url 'repairs' %}" enctype="multipart/form-data" class="w-75 p-5">
+            <p class="fs-3 fw-bold text-center">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}
